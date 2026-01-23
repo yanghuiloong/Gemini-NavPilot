@@ -293,6 +293,43 @@ function init() {
 
   window.addEventListener('scroll', onScrollEvent, { capture: true, passive: true });
   document.addEventListener('scroll', onScrollEvent, { capture: true, passive: true });
+
+  // Start positioning loop
+  updatePanelPosition();
+}
+
+function updatePanelPosition() {
+  if (navPanel) {
+    // Target the "Model Selection" icon (Pro/Gemini dropdown)
+    const target = document.querySelector('.input-area-switch');
+
+    if (target) {
+      const targetRect = target.getBoundingClientRect();
+      const panelRect = navPanel.getBoundingClientRect();
+
+      // Position logic: 60px to the right of the target switch to avoid send button
+      const left = targetRect.right + 70;
+      // Vertically centered relative to the switch button, moved up 10px for visual alignment
+      const top = (targetRect.top + (targetRect.height - panelRect.height) / 2) - 23;
+
+      navPanel.style.left = `${left}px`;
+      navPanel.style.top = `${top}px`;
+
+      // Clear conflicting styles
+      navPanel.style.bottom = 'auto';
+      navPanel.style.right = 'auto';
+      navPanel.style.margin = '0';
+    } else {
+      // Fallback: if target missing (e.g. initial load or different layout), stick to bottom right
+      if (navPanel.style.left === '' || navPanel.style.left === '0px') {
+        navPanel.style.bottom = '40px';
+        navPanel.style.right = '40px';
+        navPanel.style.left = 'auto';
+        navPanel.style.top = 'auto';
+      }
+    }
+  }
+  requestAnimationFrame(updatePanelPosition);
 }
 
 if (document.readyState === 'loading') {

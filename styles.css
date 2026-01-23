@@ -3,14 +3,7 @@
 /* Feature 2: User Question Navigator (Anchor Panel) */
 #gemini-nav-pilot-panel {
   position: fixed;
-  bottom: 65px;
-  /* Vertically aligned with typical input box position */
-  left: 60%;
-  /* Start from center */
-  margin-left: 390px;
-  /* Push to the right edge of a typical 760px wide input box */
-  right: auto;
-  /* Disable right positioning */
+  /* Position controlled by content.js to anchor near input box */
 
   /* Frosted Glass */
   background: rgba(80, 80, 80, 0.15);
