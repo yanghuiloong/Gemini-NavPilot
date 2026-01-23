@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini NavPilot Mock Test</title>
+    <style>
+        body { font-family: sans-serif; padding-bottom: 200px; background-color: #1e1f20; color: #fff; }
+        .message-container {
+            border: 1px solid #444;
+            margin: 20px;
+            padding: 20px;
+            min-height: 100px;
+            border-radius: 12px;
+            background-color: #383838;
+        }
+        .query-text-line {
+            display: block;
+            margin-bottom: 5px;
+            border-left: 2px solid #a8c7fa;
+            padding-left: 10px;
+        }
+        .spacer { height: 800px; border-left: 1px dashed #555; margin-left: 50px; }
+    </style>
+</head>
+<body>
+
+    <h1>Gemini NavPilot Test Area</h1>
+    <p>Scroll down to test jumping logic.</p>
+
+    <!-- Message 1: Single Line -->
+    <div class="message-container" id="msg-1">
+        <span class="query-text-line">User Question 1 (Single)</span>
+    </div>
+
+    <div class="spacer">Spacer 1</div>
+
+    <!-- Message 2: Multi-line (The Bug Case) -->
+    <div class="message-container" id="msg-2">
+        <span class="query-text-line">User Question 2 (Line 1)</span>
+        <span class="query-text-line">User Question 2 (Line 2)</span>
+        <span class="query-text-line">User Question 2 (Code Block Start)</span>
+        <span class="query-text-line">const x = 1;</span>
+        <span class="query-text-line">User Question 2 (End)</span>
+    </div>
+    <!-- Expected behave: Jumping here should land on #msg-2 container, not 5 separate stops -->
+
+    <div class="spacer">Spacer 2</div>
+
+    <!-- Message 3: Another Single -->
+    <div class="message-container" id="msg-3">
+        <span class="query-text-line">User Question 3</span>
+    </div>
+
+    <!-- Script Injection mimic -->
+    <script src="content.js"></script>
+
+</body>
+</html>

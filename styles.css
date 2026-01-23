@@ -1,0 +1,150 @@
+/* --- Gemini NavPilot Styles --- */
+
+/* Feature 2: User Question Navigator (Anchor Panel) */
+#gemini-nav-pilot-panel {
+  position: fixed;
+  bottom: 65px;
+  /* Vertically aligned with typical input box position */
+  left: 60%;
+  /* Start from center */
+  margin-left: 390px;
+  /* Push to the right edge of a typical 760px wide input box */
+  right: auto;
+  /* Disable right positioning */
+
+  /* Frosted Glass */
+  background: rgba(80, 80, 80, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  /* BLUE color for arrows */
+  color: #4285f4;
+
+  /* Vertical Stack Layout */
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  padding: 8px 4px;
+  /* Taller padding for vertical pill */
+  border-radius: 20px;
+  z-index: 9999;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(200, 200, 200, 0.3);
+  user-select: none;
+  transition: opacity 0.3s;
+}
+
+/* Responsive safeguard: if screen is too narrow, snap to right edge */
+@media (max-width: 1200px) {
+  #gemini-nav-pilot-panel {
+    left: auto;
+    margin-left: 0;
+    right: 20px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  #gemini-nav-pilot-panel {
+    background: rgba(255, 255, 255, 0.08);
+    color: #8ab4f8;
+    /* Lighter blue for dark mode */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+.nav-btn {
+  cursor: pointer;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+  transition: all 0.2s;
+}
+
+.nav-btn:hover {
+  background: rgba(128, 128, 128, 0.2);
+}
+
+.nav-btn:active {
+  transform: scale(0.95);
+}
+
+.nav-btn.disabled {
+  opacity: 0.3;
+  cursor: default;
+  pointer-events: none;
+}
+
+.nav-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+/* Feature 1: Scroll Jumper (Top/Bottom Arrows) - BLUE */
+.scroll-jumper {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 34px;
+  height: 34px;
+
+  /* Frosted Glass */
+  background: rgba(100, 100, 100, 0.12);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  /* BLUE color for arrows */
+  color: #4285f4;
+
+  border-radius: 50%;
+  border: 1px solid rgba(200, 200, 200, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 9999;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.2s, background 0.2s;
+  pointer-events: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .scroll-jumper {
+    background: rgba(255, 255, 255, 0.08);
+    color: #8ab4f8;
+    /* Lighter blue for dark mode */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+.scroll-jumper.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.scroll-jumper:hover {
+  background: rgba(66, 133, 244, 0.15);
+  transform: translateX(-50%) scale(1.1);
+}
+
+.scroll-jumper svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+#scroll-to-top {
+  top: 90px;
+}
+
+#scroll-to-bottom {
+  bottom: 200px;
+}

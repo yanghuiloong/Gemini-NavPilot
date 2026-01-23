@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "Gemini NavPilot",
+  "version": "1.0",
+  "description": "Navigate between User Questions in Gemini chat，一键回到顶部/底部 & 轻松在用户提问节点之间跳转。",
+  "content_scripts": [
+    {
+      "matches": [
+        "*://gemini.google.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "css": [
+        "styles.css"
+      ]
+    }
+  ],
+  "icons": {
+    "16": "icon/icon.png",
+    "48": "icon/icon.png",
+    "128": "icon/icon.png"
+  },
+  "action": {
+    "default_icon": "icon/icon.png"
+  }
+}
