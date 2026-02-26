@@ -21,7 +21,7 @@
   padding: 8px 4px;
   /* Taller padding for vertical pill */
   border-radius: 20px;
-  z-index: 9999;
+  z-index: 1;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(200, 200, 200, 0.3);
   user-select: none;
@@ -138,6 +138,4 @@
   top: 90px;
 }
 
-#scroll-to-bottom {
-  bottom: 200px;
-}
+/* #scroll-to-bottom position is dynamically set by JS based on input area position */
